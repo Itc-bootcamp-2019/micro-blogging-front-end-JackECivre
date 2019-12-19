@@ -13,11 +13,12 @@ const Navbar = () => {
                 <Link id="profile" to="/Profile">Profile</Link>
                 <br />
             </div>
-            <Route path="/Home" component={Home}>
+            <Route path="/Home" >
                 <Home />
             </Route>
-            <Route path="/Profile" component={Profile}>
-                <Profile />
+            <Route path="/Profile">
+                <Profile 
+                />
             </Route>
         </Router>
     )

@@ -14,28 +14,24 @@ class Home extends React.Component {
 
     setTweetInput(event) {
         this.setState({ input: event.target.value });
-
     }
-
 
     createTweet() {
 
         let newTweet = {
             userName: localStorage.userName,
-            tweetInput: this.state.input,
-            timeStamp: new Date().toISOString()
+            content: this.state.input,
+            date: new Date().toISOString()
         }
-
 
         this.setState({
             tweets: [newTweet, ...this.state.tweets],
             userName: localStorage.userName,
             input: ""
         }, function() {
-            localStorage.setItem("timeStamp", new Date().toISOString())
+            localStorage.setItem("date", new Date().toISOString())
             localStorage.setItem("tweetStorage", JSON.stringify(this.state.tweets))
-        }
-        );
+        });
         
     }
 
@@ -56,11 +52,10 @@ render() {
             </div>
 
             <DisplayTweetList tweetList={this.state.tweets} />
-
-
+            
         </div>
     )
 }
 }
-export default Home;
 
+export default Home;

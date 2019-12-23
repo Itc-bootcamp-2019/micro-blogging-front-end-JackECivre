@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Switch, Link, Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Navbar from "./components/navbar"
+import Navbar from "./components/menu"
 
 
 function App() {

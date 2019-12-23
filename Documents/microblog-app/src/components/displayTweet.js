@@ -5,8 +5,8 @@ import '../App.css';
 
 function DisplayTweet(props) {
     const userName=  props.userName;
-    const timeStamp= props.timeStamp;
-    const tweetInput= props.tweetInput;
+    const date= props.date;
+    const content= props.content;
     
     
     
@@ -14,8 +14,8 @@ function DisplayTweet(props) {
 return(
         <div id="newTweetContainer" >
             <span id="username" > {userName} </span>
-            <span id="timeStamp" > {timeStamp} </span>
-            <p id="tweetOutput"> {tweetInput} </p>
+            <span id="timeStamp" > {date} </span>
+            <p id="tweetOutput"> {content} </p>
         </div>
 )    
 

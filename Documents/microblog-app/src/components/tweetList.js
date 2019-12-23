@@ -9,7 +9,7 @@ function DisplayTweetList(props) {
     return (
       <div id="tweetList">
           {
-              props.tweetList.map(tweet => <DisplayTweet userName= {tweet.userName} timeStamp= {tweet.timeStamp} tweetInput= {tweet.tweetInput} key={[tweet.timeStamp, +"by "+ tweet.userName]} />)
+              props.tweetList.map(tweet => <DisplayTweet userName= {tweet.userName} date= {tweet.date} content= {tweet.content} key={[tweet.date, +"by "+ tweet.userName]} />)
           }
       </div>     
     )

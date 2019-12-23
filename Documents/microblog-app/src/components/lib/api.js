@@ -7,7 +7,7 @@ export function getTweets() {
     return axios.get(`${baseUrl}`);
 }
 
-export function createTweet(tweetObj) {
+export function postTweet(tweetObj) {
     return axios.post(`${baseUrl}`, {tweet:tweetObj});
 }
 

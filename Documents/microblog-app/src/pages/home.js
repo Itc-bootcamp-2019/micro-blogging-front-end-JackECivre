@@ -1,13 +1,15 @@
 import React from "react";
 import '../App.css';
 import DisplayTweetList from "../components/tweetList"
+// import Axios from "axios";
+import {getTweets, postTweet} from "../components/lib/api"
 
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tweets: JSON.parse(localStorage.getItem("tweetStorage")) || [],
+            tweets: [],
             input: ""
         }
     }
@@ -35,6 +37,29 @@ class Home extends React.Component {
         
     }
 
+    componentDidMount(){
+        let newTweet = {
+            userName: localStorage.userName,
+            content: this.state.input,
+            date: new Date().toISOString()
+        }
+        getTweets()
+            .then (response => {
+                // console.log(response)
+                this.setState({
+                    tweets: response.data.tweets
+                });
+            });
+        postTweet(newTweet)
+        .then(() => {
+            const { tweets } =this.state;
+            const tweetArr = [newTweet, ...tweets]
+                    this.setState({
+                tweets : tweetArr
+            })
+        }
+            )
+    }
 
 render() {
     return (

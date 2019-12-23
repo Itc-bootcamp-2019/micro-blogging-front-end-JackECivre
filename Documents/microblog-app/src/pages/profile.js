@@ -14,13 +14,15 @@ class Profile extends React.Component {
     setUserInput(event) {
         this.setState({ input: event.target.value });
         // console.log(event.target.value)
+        
     }
-
+    
     createUserName() {
         
         this.setState({ userName: this.state.input});
         // console.log(this.state.input)
         localStorage.setItem("userName", this.state.input)
+        this.setState({ input:"" });
     }
 
     render() {
@@ -35,7 +37,7 @@ class Profile extends React.Component {
                 </div>
                 <p>User Name</p>
                 <div id="profileInput">
-                    <input onChange={(event) => this.setUserInput(event)} type="text" id="userNameInput" placeholder="Enter Username" />
+                    <input onChange={(event) => this.setUserInput(event)} type="text" id="userNameInput" value={this.state.input} placeholder="Enter Username" />
 
                 </div>
                 <button onClick={() => this.createUserName()} id="userNameButton" type="button">Save</button>

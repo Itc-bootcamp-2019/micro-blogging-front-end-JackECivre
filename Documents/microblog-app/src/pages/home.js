@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import DisplayTweetList from "../components/tweetList"
 // import Axios from "axios";
-import {getTweets, postTweet} from "../components/lib/api"
+import { getTweets, postTweet } from "../components/lib/api"
 
 
 class Home extends React.Component {
@@ -30,57 +30,44 @@ class Home extends React.Component {
             tweets: [newTweet, ...this.state.tweets],
             userName: localStorage.userName,
             input: ""
-        }, function() {
-            localStorage.setItem("date", new Date().toISOString())
-            localStorage.setItem("tweetStorage", JSON.stringify(this.state.tweets))
+            // }, function() {
+            //     localStorage.setItem("date", new Date().toISOString())
+            //     localStorage.setItem("tweetStorage", JSON.stringify(this.state.tweets))
         });
-        
-    }
 
-    componentDidMount(){
-        let newTweet = {
-            userName: localStorage.userName,
-            content: this.state.input,
-            date: new Date().toISOString()
-        }
-        getTweets()
-            .then (response => {
-                // console.log(response)
-                this.setState({
-                    tweets: response.data.tweets
-                });
-            });
         postTweet(newTweet)
-        .then(() => {
-            const { tweets } =this.state;
-            const tweetArr = [newTweet, ...tweets]
-                    this.setState({
-                tweets : tweetArr
-            })
-        }
-            )
     }
 
-render() {
-    return (
-        <div id="homeContainer">
+    componentDidMount() {
+        getTweets().then(response => {
+            // console.log(response)
+            this.setState({
+                tweets: response.data.tweets
+            });
+        });
+    }
 
-            <div id="profileHeader">
-                <h1>
-                    Home
+
+    render() {
+        return (
+            <div id="homeContainer">
+
+                <div id="profileHeader">
+                    <h1>
+                        Home
                 </h1>
-            </div>
-            <p>New Tweet</p>
-            <div id="tweetInput">
-                <textarea onChange={(event) => this.setTweetInput(event)} type="text" resize="none" minLength="1" maxLength="140" value={this.state.input} placeholder="What you have in mind..." id="tweetInput" />
-                <button id="tweetButton" onClick={() => this.createTweet()} type="button">Tweet</button>
-            </div>
+                </div>
+                <p>New Tweet</p>
+                <div id="tweetInput">
+                    <textarea onChange={(event) => this.setTweetInput(event)} type="text" resize="none" minLength="1" maxLength="140" value={this.state.input} placeholder="What you have in mind..." id="tweetInput" />
+                    <button id="tweetButton" onClick={() => this.createTweet()} type="button">Tweet</button>
+                </div>
 
-            <DisplayTweetList tweetList={this.state.tweets} />
-            
-        </div>
-    )
-}
+                <DisplayTweetList tweetList={this.state.tweets} />
+
+            </div>
+        )
+    }
 }
 
 export default Home;

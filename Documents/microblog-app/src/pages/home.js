@@ -12,6 +12,7 @@ class Home extends React.Component {
             tweets: [],
             input: ""
         }
+        this.getTweetFunction = this.getTweetFunction.bind(this)
     }
 
     setTweetInput(event) {
@@ -38,7 +39,8 @@ class Home extends React.Component {
         postTweet(newTweet)
     }
 
-    componentDidMount() {
+
+    getTweetFunction() {
         getTweets().then(response => {
             // console.log(response)
             this.setState({
@@ -46,6 +48,18 @@ class Home extends React.Component {
             });
         });
     }
+    
+
+    componentDidMount() {
+        this.getTweetFunction();
+        try {
+            setInterval(this.getTweetFunction, 10000);
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
 
 
     render() {

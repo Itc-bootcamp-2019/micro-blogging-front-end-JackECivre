@@ -37,9 +37,11 @@ class Profile extends React.Component {
                 </div>
                 <p>User Name</p>
                 <div id="profileInput">
-                    <input onChange={(event) => this.setUserInput(event)} type="text" id="userNameInput" value={this.state.input} placeholder="Enter Username" />
+                    <input onChange={(event) => this.setUserInput(event)} type="text" autoComplete="off" id="userNameInput" value={this.state.input} placeholder="Enter Username" />
 
                 </div>
+
+                Tweeting as : {this.state.input}
                 <button onClick={() => this.createUserName()} id="userNameButton" type="button">Save</button>
 
             </form>

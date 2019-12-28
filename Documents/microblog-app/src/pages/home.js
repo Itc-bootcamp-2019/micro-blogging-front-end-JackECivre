@@ -1,5 +1,4 @@
 import React from "react";
-import '../App.css';
 import DisplayTweetList from "../components/tweetList"
 // import Axios from "axios";
 import { getTweets, postTweet } from "../components/lib/api"
@@ -55,7 +54,7 @@ class Home extends React.Component {
         try {
             setInterval(this.getTweetFunction, 10000);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
 
     }
